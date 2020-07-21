@@ -21,6 +21,7 @@ const ArticleShowContainer = (props) => {
       <Article
         key={articleRecord.id}
         id={articleRecord.id}
+        user={articleRecord.user}
         title={articleRecord.title}
         description={articleRecord.description}
       />

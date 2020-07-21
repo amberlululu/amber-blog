@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     end
   end 
 
-  get '*path', to: 'homes#index', via: :all
+  # get '*path', to: 'homes#index', via: :all
 end
