@@ -1,51 +1,54 @@
 class Api::V1::ArticlesController < ApiController
-  # protect_from_forgery unless: -> { request.format.json? }
-
+  
+  protect_from_forgery unless: -> { request.format.json? }
+  
   def index
     render json: Article.all
+
   end
 
   # example of show endpoint
   def show
-    # binding.pry
     article = Article.find(params[:id])
     render json: article
   end
 
 
-  def create
-    article = Article.new(article_params)
+  # def create
+  #   article = Article.new(article_params)
+  #   user = article.user 
 
-    if article.save
-      render json: article
-    else 
-      render json: {error: article.errors.messages}, status: 422
-    end 
+  #   if article.save
+  #     render json: article
+  #   else 
+  #     render json: {error: article.errors.messages}, status: 422
+  #   end 
       
-  end 
+  # end 
 
-  def update
-    article = Article.find(params[:id])
+  # def update
+  #   article = Article.find(params[:id])
+  #   user = article.user
 
-    if article.update(article_params)
-      render json: article
-    else 
-      render json: {error: article.errors.messages}, status: 422
-    end 
+  #   if article.update(article_params)
+  #     render json: article
+  #   else 
+  #     render json: {error: article.errors.messages}
+  #   end 
 
-  end 
+  # end 
 
 
-  def destroy 
-    article = Article.find(params[:id])
+  # def destroy 
+  #   article = Article.find(params[:id])
 
-    if article.destroy
-      # redirect_to json: articles
-    else 
-      render json: {error: article.errors.messages}, status: 422
-    end 
+  #   if article.destroy
+  #     # redirect_to json: articles
+  #   else 
+  #     render json: {error: article.errors.messages}
+  #   end 
 
-  end 
+  # end 
 
 
   private
