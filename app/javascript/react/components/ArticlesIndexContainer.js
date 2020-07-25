@@ -1,33 +1,49 @@
 import React, { useState, useEffect } from "react";
 import ArticleTile from "./ArticleTile";
+import { Link } from "react-router-dom";
+
 const ArticlesIndexContainer = (props) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch("/api/v1/articles.json")
-      .then((response) => response.json())
-      .then((articleBody) => {
-        setArticles(articleBody);
+    fetch("/api/v1/articles")
+      .then((response) => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then((response) => {
+        return response.json();
+      })
+      .then((body) => {
+        setArticles(body);
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`));
   }, []);
 
   let articletiles = articles.map((article) => {
     return (
-      <ArticleTile
-        id={article.id}
-        key={article.id}
-        user={article.user}
-        title={article.title}
-        description={article.description}
-      />
+      <div>
+        <ArticleTile
+          id={article.id}
+          key={article.id}
+          user={article.user}
+          title={article.title}
+          description={article.description}
+        />
+      </div>
     );
   });
 
   return (
     <div>
       <h3> Articles Index Container </h3>
-      {articletiles}
+      <h3>{articletiles}</h3>
+      <Link to="/articles/new">Create New Article</Link>
     </div>
   );
 };

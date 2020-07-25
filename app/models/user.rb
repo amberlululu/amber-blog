@@ -13,5 +13,7 @@ class User < ApplicationRecord
   #                      format: { with: VALID_EMAIL_REGEX }
   validates :first_name, presence: true
   validates :first_name, presence: true
-  # has_many :articles
+  validates :username, presence: true
+  
+  has_many :articles
 end

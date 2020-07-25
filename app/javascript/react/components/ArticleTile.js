@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 const ArticleTile = ({ id, user, title, description }) => {
   return (
     <div>
-      <h1>
-        {user.username}
+      <h3>
         <Link to={`/articles/${id}`}> {title} </Link>
-      </h1>
+      </h3>
     </div>
   );
 };

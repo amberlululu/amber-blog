@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Article = ({ id, user, title, description }) => {
   return (
     <div>
-      <h1>{user.username}</h1>
-      <h2>{title}</h2>
-      <div>{description}</div>
+      <h3>Author: {user}</h3>
+      <h3>Article Name: {title}</h3>
+      <h4>Description:</h4>
+      <h4>{description}</h4>
+      <Link to="/">Home</Link>
     </div>
   );
 };
