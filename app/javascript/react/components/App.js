@@ -1,6 +1,6 @@
 import React from "react";
 import ArticlesIndexContainer from "./ArticlesIndexContainer";
-
+import ArticlesFormContainer from "./ArticlesFormContainer";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ArticleShowContainer from "./ArticleShowContainer";
 
@@ -10,11 +10,10 @@ export const App = (props) => {
       <Switch>
         <Route exact path="/" component={ArticlesIndexContainer} />
         <Route exact path="/articles" component={ArticlesIndexContainer} />
+        <Route exact path="/articles/new" component={ArticlesFormContainer} />
         <Route exact path="/articles/:id" component={ArticleShowContainer} />
       </Switch>
     </BrowserRouter>
-
-    // <div>Hello</div>
   );
 };
 

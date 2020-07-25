@@ -1,54 +1,48 @@
 class Api::V1::ArticlesController < ApiController
+  before_action :authenticate_user, except: [:index, :show]
+  before_action :authorize_user, except: [:index, :show, :create]
   
-  protect_from_forgery unless: -> { request.format.json? }
   
-  def index
+  def index    
     render json: Article.all
-
   end
 
-  # example of show endpoint
-  def show
+  def show 
     article = Article.find(params[:id])
     render json: article
   end
 
 
-  # def create
-  #   article = Article.new(article_params)
-  #   user = article.user 
+  def create
+    article = Article.new(article_params)
+    article.user = current_user
 
-  #   if article.save
-  #     render json: article
-  #   else 
-  #     render json: {error: article.errors.messages}, status: 422
-  #   end 
-      
-  # end 
+    if article.save
+      render json: article
+    else 
+      render json: {error: article.errors.messages}
+    end       
+  end 
 
-  # def update
-  #   article = Article.find(params[:id])
-  #   user = article.user
+  def update
 
-  #   if article.update(article_params)
-  #     render json: article
-  #   else 
-  #     render json: {error: article.errors.messages}
-  #   end 
+    article = Article.find(params[:id])
 
-  # end 
+    if article.update(article_params)
+      render json: article
+    else 
+      render json: {error: article.errors.messages}
+    end 
+
+  end 
 
 
-  # def destroy 
-  #   article = Article.find(params[:id])
-
-  #   if article.destroy
-  #     # redirect_to json: articles
-  #   else 
-  #     render json: {error: article.errors.messages}
-  #   end 
-
-  # end 
+  def destroy 
+    
+    article = Article.find(params[:id])   
+    article.destroy
+    render json: current_user.articles
+  end 
 
 
   private
@@ -56,5 +50,17 @@ class Api::V1::ArticlesController < ApiController
   def article_params
     params.require(:article).permit(:title,:description)
   end 
+
+  def authorize_user
+    if !user_signed_in? || !(current_user.role == "admin")
+      render json: {error: ["Only admins have access to this feature"]}
+    end
+  end
+
+  def authenticate_user
+    if !user_signed_in?
+      render json: {error: ["You need to be signed in first"]}
+    end
+  end
 
 end
