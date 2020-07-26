@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ArticleTile = ({ id, user, title, description }) => {
+const ArticleTile = ({ id, title, description }) => {
   return (
     <div>
       <h3>

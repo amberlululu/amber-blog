@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :authorized]
+  before_action :authenticate_user!, except: [:index]
   before_action :authorize_user, except: [:index, :authenticated]
 
   def index    

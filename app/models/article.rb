@@ -3,4 +3,15 @@ class Article < ApplicationRecord
   validates :description, presence: true, length: {minimum: 10, maximum: 300}
   
   belongs_to :user
+
+
+  def user_name
+    user.username
+  end
+
+  def created_date
+    created_at.strftime("%-m/%-d/%Y")
+  end 
+
+
 end 

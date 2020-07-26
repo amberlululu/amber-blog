@@ -31,7 +31,6 @@ const ArticlesIndexContainer = (props) => {
         <ArticleTile
           id={article.id}
           key={article.id}
-          user={article.user}
           title={article.title}
           description={article.description}
         />

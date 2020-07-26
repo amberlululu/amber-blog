@@ -1,45 +1,42 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-import ErrorList from "./ErrorList";
-import _ from "lodash";
+// import { Redirect } from "react-router-dom";
+// import ErrorList from "./ErrorList";
+// import _ from "lodash";
 
-const ArticlesFormContainer = (props) => {
-  const [newArticle, setNewArticle] = useState({
-    title: "",
-    description: "",
-  });
+const editArticleForm = (props) => {
+  const [article, setArticle] = useState(props.currentArticle);
 
-  const [errors, setErrors] = useState({});
+  // const [errors, setErrors] = useState({});
 
-  const [redirect, setRedirect] = useState(null);
+  // const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const handleInputChange = (event) => {
-    setNewArticle({
+    setArticle({
       ...newArticle,
       [event.currentTarget.id]: event.currentTarget.value,
     });
   };
 
-  const validForSubmission = () => {
-    let submitErrors = {};
-    const requiredFields = ["title", "description"];
-    requiredFields.forEach((field) => {
-      if (newArticle[field].trim() === "") {
-        submitErrors = {
-          ...submitErrors,
-          [field]: "is blank",
-        };
-      }
-    });
-    setErrors(submitErrors);
-    return _.isEmpty(submitErrors);
-  };
+  // const validForSubmission = () => {
+  //   let submitErrors = {};
+  //   const requiredFields = ["title", "description"];
+  //   requiredFields.forEach((field) => {
+  //     if (newArticle[field].trim() === "") {
+  //       submitErrors = {
+  //         ...submitErrors,
+  //         [field]: "is blank",
+  //       };
+  //     }
+  //   });
+  //   setErrors(submitErrors);
+  //   return _.isEmpty(submitErrors);
+  // };
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    if (validForSubmission()) {
-      addNewArticle(newArticle);
-    }
+    // if (validForSubmission()) {
+    //   addNewArticle(newArticle);
+    // }
   };
 
   const addNewArticle = (article) => {
@@ -63,20 +60,13 @@ const ArticlesFormContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        if (body) {
-          // debugger;
-          setRedirect(body.id);
-        } else if ((body.error = "you need to be signed in first")) {
-          props.history.go("/users/sign_in");
-        } else if (body.error) {
-          setErrors(body.error.description);
-        }
+        setShouldRedirect(true);
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`));
   };
 
-  if (redirect !== null) {
-    return <Redirect to={`/articles/${redirect}`} />;
+  if (shouldRedirect) {
+    return <Redirect to="/articles" />;
   }
 
   return (
