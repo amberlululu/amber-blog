@@ -9,7 +9,6 @@ const ArticleShowContainer = (props) => {
     description: "",
   });
 
-  // const [currentUser, setCurrentUser] = useState({});
   const [redirect, shouldRedirect] = useState(false);
 
   let articleId = props.match.params.id;
