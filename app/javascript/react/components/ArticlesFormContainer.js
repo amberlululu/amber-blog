@@ -63,10 +63,9 @@ const ArticlesFormContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        if (body) {
-          // debugger;
+        if (body.id) {
           setRedirect(body.id);
-        } else if ((body.error = "you need to be signed in first")) {
+        } else if ((body.error[0] = "you need to be signed in first")) {
           props.history.go("/users/sign_in");
         } else if (body.error) {
           setErrors(body.error.description);

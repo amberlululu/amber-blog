@@ -2,8 +2,9 @@ class Api::V1::ArticlesController < ApiController
   before_action :authenticate_user, except: [:index, :show]
   before_action :authorize_user, except: [:index, :show, :create]
   
-  def index    
-    render json: Article.all
+  def index 
+    articles = Article.all 
+    render json: articles
   end
 
   def show 
@@ -23,26 +24,11 @@ class Api::V1::ArticlesController < ApiController
     end       
   end 
 
-  # def update
 
-  #   article = Article.find(params[:id])
-
-  #   if article.update(article_params)
-  #     render json: article
-  #   else 
-  #     render json: {error: article.errors.messages}
-  #   end 
-
-  # end 
-
-
-  def destroy 
-    
-    article = Article.find(params[:id])  
-    if article.user = current_user 
-      article.destroy
-      render json: current_user.articles
-    end 
+  def destroy   
+    article = Article.find(params[:id])    
+    article.destroy
+    render json: articles
   end 
 
 

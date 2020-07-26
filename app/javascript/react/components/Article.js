@@ -8,7 +8,6 @@ const Article = ({ id, user, title, description }) => {
       <h3>Article Name: {title}</h3>
       <h4>Description:</h4>
       <h4>{description}</h4>
-      <button>Delete</button>
       <Link to="/">Home</Link>
     </div>
   );
