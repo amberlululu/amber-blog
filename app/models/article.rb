@@ -3,6 +3,7 @@ class Article < ApplicationRecord
   validates :description, presence: true, length: {minimum: 10, maximum: 300}
   
   belongs_to :user
+  has_many :reviews
 
 
   def user_name

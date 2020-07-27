@@ -68,7 +68,7 @@ const ArticlesFormContainer = (props) => {
         } else if ((body.error[0] = "you need to be signed in first")) {
           props.history.go("/users/sign_in");
         } else if (body.error) {
-          setErrors(body.error.description);
+          setErrors(body.error.description[0]);
         }
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`));

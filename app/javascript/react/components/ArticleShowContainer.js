@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import Article from "./Article";
+import ReviewFormContainer from "./ReviewFormContainer";
 
 const ArticleShowContainer = (props) => {
   const [articleRecord, setArticleRecord] = useState({
@@ -8,6 +9,15 @@ const ArticleShowContainer = (props) => {
     title: "",
     description: "",
   });
+
+  const [reviewRecord, setReviewRecord] = useState([
+    {
+      id: null,
+      rating: null,
+      body: "",
+      article_id: null,
+    },
+  ]);
 
   const [redirect, shouldRedirect] = useState(false);
 
@@ -77,6 +87,28 @@ const ArticleShowContainer = (props) => {
     </button>
   );
 
+  useEffect(() => {
+    fetch(`/api/v1/articles/${articleId}/reviews`, {
+      credentials: "same-origin",
+    })
+      .then((response) => {
+        if (response.ok) {
+          // debugger;
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then((response) => response.json())
+      .then((body) => {
+        // debugger;
+        setReviewRecord(body);
+      })
+      .catch((error) => console.error(`Error in fetch: ${error.message}`));
+  }, []);
+
   return (
     <div>
       <Article
@@ -85,8 +117,10 @@ const ArticleShowContainer = (props) => {
         user={articleRecord.user_id}
         title={articleRecord.title}
         description={articleRecord.description}
+        reviews={reviewRecord}
       />
       {deleteButton}
+      <ReviewFormContainer articleId={articleId} />
     </div>
   );
 };
