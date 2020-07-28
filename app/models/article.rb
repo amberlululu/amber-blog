@@ -4,14 +4,4 @@ class Article < ApplicationRecord
   
   belongs_to :user
 
-
-  def user_name
-    user.username
-  end
-
-  def created_date
-    created_at.strftime("%-m/%-d/%Y")
-  end 
-
-
 end 
