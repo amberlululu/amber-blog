@@ -10,14 +10,7 @@ const ArticleShowContainer = (props) => {
     description: "",
   });
 
-  const [reviewRecord, setReviewRecord] = useState([
-    {
-      id: null,
-      rating: null,
-      body: "",
-      article_id: null,
-    },
-  ]);
+  const [reviewRecord, setReviewRecord] = useState([]);
 
   const [redirect, shouldRedirect] = useState(false);
 
@@ -43,32 +36,32 @@ const ArticleShowContainer = (props) => {
       .catch((error) => console.error(`Error in fetch: ${error.message}`));
   }, []);
 
-  const removeArticle = () => {
-    let id = props.match.params.id;
-    fetch(`/api/v1/articles/${id}`, {
-      method: "DELETE",
-      credentials: "same-origin",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    }).then(() => {
-      shouldRedirect(true);
-    });
-  };
+  // const removeArticle = () => {
+  //   let id = props.match.params.id;
+  //   fetch(`/api/v1/articles/${id}`, {
+  //     method: "DELETE",
+  //     credentials: "same-origin",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //   }).then(() => {
+  //     shouldRedirect(true);
+  //   });
+  // };
 
-  if (redirect) {
-    return <Redirect to="/articles" />;
-  }
+  // if (redirect) {
+  //   return <Redirect to="/articles" />;
+  // }
 
-  const confirmDelete = () => {
-    let confirmMessage = confirm("Do you want to delete this item?");
-    if (confirmMessage === true) {
-      removeArticle();
-    }
-  };
+  // const confirmDelete = () => {
+  //   let confirmMessage = confirm("Do you want to delete this item?");
+  //   if (confirmMessage === true) {
+  //     removeArticle();
+  //   }
+  // };
 
-  let deleteButton;
+  // let deleteButton;
   // if (currentUser) {
   //   if (currentUser.role === "member") {
   //     deleteButton = (
@@ -81,11 +74,11 @@ const ArticleShowContainer = (props) => {
   //   }
   // }
 
-  deleteButton = (
-    <button className="button" onClick={confirmDelete}>
-      Delete
-    </button>
-  );
+  // deleteButton = (
+  //   <button className="button" onClick={confirmDelete}>
+  //     Delete
+  //   </button>
+  // );
 
   useEffect(() => {
     fetch(`/api/v1/articles/${articleId}/reviews`, {
@@ -93,7 +86,6 @@ const ArticleShowContainer = (props) => {
     })
       .then((response) => {
         if (response.ok) {
-          // debugger;
           return response;
         } else {
           let errorMessage = `${response.status} (${response.statusText})`,
@@ -103,7 +95,6 @@ const ArticleShowContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        // debugger;
         setReviewRecord(body);
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`));
@@ -119,7 +110,6 @@ const ArticleShowContainer = (props) => {
         description={articleRecord.description}
         reviews={reviewRecord}
       />
-      {deleteButton}
       <ReviewFormContainer articleId={articleId} />
     </div>
   );

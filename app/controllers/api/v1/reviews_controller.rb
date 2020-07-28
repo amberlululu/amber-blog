@@ -4,7 +4,15 @@ class Api::V1::ReviewsController < ApiController
   def index
     article = Article.find(params[:article_id])
     reviews = article.reviews
-    render json: reviews
+    reviewwithuser = []
+    reviews.each do |review| 
+      newreview = {rating: review.rating,
+      body: review.body,
+      username: User.find(review.user_id)
+      }
+    reviewwithuser << newreview
+    end 
+    render json: reviewwithuser
   end
 
   def create 

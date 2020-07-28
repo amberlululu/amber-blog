@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Review from "./Review";
 
-const Article = ({ id, user, title, description, reviews }) => {
+const Article = ({ id, key, user, title, description, reviews }) => {
   const articleReviews = reviews.map((review) => {
     return (
       <Review
@@ -10,6 +10,7 @@ const Article = ({ id, user, title, description, reviews }) => {
         id={review.id}
         rating={review.rating}
         body={review.body}
+        user={review.username.username}
       />
     );
   });

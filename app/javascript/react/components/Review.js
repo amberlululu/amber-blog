@@ -1,8 +1,9 @@
 import React from "react";
 
-const Review = ({ id, rating, body }) => {
+const Review = ({ id, key, rating, body, user }) => {
   return (
-    <div key={id}>
+    <div key={key}>
+      <p>User: {user}</p>
       <p>Rating: {rating}</p>
       <p>Body: {body}</p>
     </div>
