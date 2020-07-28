@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ArticleTile = ({ id, title, description }) => {
   return (
-    <div>
+    <div key={key}>
       <h3>
         <Link to={`/articles/${id}`}> {title} </Link>
       </h3>

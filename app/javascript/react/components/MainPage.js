@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const MainPage = (props) => {
   return (
     <div>
-      <h3>Welcome to AmberBlog</h3>
+      <h3>Welcome to AmberZone</h3>
       <Link to="/articles">See Articles</Link>
     </div>
   );
