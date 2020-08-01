@@ -1,28 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AmberZone</title>
+  <title>AmberBlog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-</head>
-<body>
   
-  <nav class="top-bar">
-    <h1><a href="/">AmberBlog</a></h1>
-
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
+<body id="page-content">
+  <%= render 'layouts/navigation'%>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
@@ -34,6 +19,12 @@
   <p class="alert"><%= alert %></p>
 
   <%= yield %>
+
+  <footer class="py-4 bg-dark text-white">
+    <div class="container text-center">
+        <small>Copyright &copy; AmberBlog</small>
+    </div>
+  </footer>
 
   <%= javascript_include_tag 'application' %>
   

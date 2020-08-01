@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
 import Article from "./Article";
 import ReviewFormContainer from "./ReviewFormContainer";
 
 const ArticleShowContainer = (props) => {
-  const [articleRecord, setArticleRecord] = useState({
-    id: null,
-    title: "",
-    description: "",
-  });
+  const [articleRecord, setArticleRecord] = useState({});
 
-  const [reviewRecord, setReviewRecord] = useState([]);
-
-  const [redirect, shouldRedirect] = useState(false);
+  const [reviews, setReviews] = useState([]);
 
   let articleId = props.match.params.id;
-
   useEffect(() => {
     fetch(`/api/v1/articles/${articleId}`, {
       credentials: "same-origin",
@@ -31,7 +23,8 @@ const ArticleShowContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        setArticleRecord(body);
+        setArticleRecord(body.article);
+        setReviews(body.article.reviews);
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`));
   }, []);
@@ -80,37 +73,20 @@ const ArticleShowContainer = (props) => {
   //   </button>
   // );
 
-  useEffect(() => {
-    fetch(`/api/v1/articles/${articleId}/reviews`, {
-      credentials: "same-origin",
-    })
-      .then((response) => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
-          throw error;
-        }
-      })
-      .then((response) => response.json())
-      .then((body) => {
-        setReviewRecord(body);
-      })
-      .catch((error) => console.error(`Error in fetch: ${error.message}`));
-  }, []);
+  const addReview = (newReview) => {
+    setReviews([...reviews, newReview]);
+  };
 
   return (
     <div>
       <Article
         key={articleRecord.id}
         id={articleRecord.id}
-        user={articleRecord.user_id}
         title={articleRecord.title}
         description={articleRecord.description}
-        reviews={reviewRecord}
+        reviews={reviews}
       />
-      <ReviewFormContainer articleId={articleId} />
+      <ReviewFormContainer articleId={articleId} addReview={addReview} />
     </div>
   );
 };

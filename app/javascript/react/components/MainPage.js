@@ -1,12 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment } from "react";
+// import { Link } from "react-router-dom";
 
 const MainPage = (props) => {
   return (
-    <div>
-      <h3>Welcome to AmberZone</h3>
-      <Link to="/articles">See Articles</Link>
-    </div>
+    <Fragment>
+      <div id="page-content">
+        <div className="jumbotron jumbotron-fluid text-center">
+          <div className="container">
+            <h1 className="display-4">Fluid words</h1>
+            <p className="lead">We are here waiting for your story!</p>
+            <a className="btn btn-info btn-lg" href="#" role="button">
+              Sign Up
+            </a>
+          </div>
+        </div>
+      </div>
+    </Fragment>
   );
 };
 

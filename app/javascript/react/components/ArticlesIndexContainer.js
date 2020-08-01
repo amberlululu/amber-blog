@@ -20,27 +20,25 @@ const ArticlesIndexContainer = (props) => {
         return response.json();
       })
       .then((body) => {
-        setArticles(body);
+        setArticles(body.articles);
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`));
   }, []);
 
   let articletiles = articles.map((article) => {
     return (
-      <div>
-        <ArticleTile
-          id={article.id}
-          key={article.id}
-          title={article.title}
-          description={article.description}
-        />
-      </div>
+      <ArticleTile
+        id={article.id}
+        key={article.id}
+        title={article.title}
+        description={article.description}
+      />
     );
   });
 
   return (
     <div>
-      <h3> Articles Index Container </h3>
+      <h1 className="text-center">Listing all Articles</h1>
       <h3>{articletiles}</h3>
       <Link to="/articles/new">Create New Article</Link>
     </div>

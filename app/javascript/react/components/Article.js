@@ -10,13 +10,13 @@ const Article = ({ id, key, user, title, description, reviews }) => {
         id={review.id}
         rating={review.rating}
         body={review.body}
-        user={review.username.username}
+        user={review.commenter_name}
       />
     );
   });
 
   return (
-    <div>
+    <div key={key}>
       <h3>Author: {user}</h3>
       <h3>Article Name: {title}</h3>
       <h4>Description:</h4>

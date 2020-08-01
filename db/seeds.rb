@@ -7,3 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user1 = User.create(first_name:"", last_name: "", email:"", password:"")
+
+
+  # <Link to={`/articles/${id}`}> {title} </Link>
+

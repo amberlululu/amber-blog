@@ -9,7 +9,7 @@ class Api::V1::ArticlesController < ApiController
 
   def show 
     article = Article.find(params[:id])
-    render json: article
+    render json: article, serializer: ArticleShowSerializer
   end
 
 

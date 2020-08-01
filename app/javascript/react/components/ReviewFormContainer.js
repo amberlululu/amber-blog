@@ -1,57 +1,46 @@
 import React, { useState } from "react";
-import ErrorList from "./ErrorList";
-import _ from "lodash";
 
 const ReviewFormContainer = (props) => {
-  const [reviewRecord, setReviewRecord] = useState([
-    {
-      rating: null,
-      body: "",
-      article_id: null,
-    },
-  ]);
+  const [review, setReview] = useState({
+    rating: "",
+    body: "",
+  });
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState("");
+
+  let errorMessage = <p></p>;
+  if (errors !== "") {
+    errorMessage = <p>{errors}</p>;
+  }
 
   const handleInputChange = (event) => {
-    setReviewRecord({
-      ...reviewRecord,
+    setReview({
+      ...review,
       [event.currentTarget.id]: event.currentTarget.value,
     });
   };
 
-  const validForSubmission = () => {
-    let submitErrors = {};
-    const requiredFields = ["rating", "body"];
-    requiredFields.forEach((field) => {
-      if (reviewRecord[field].trim() === "") {
-        submitErrors = {
-          ...submitErrors,
-          [field]: "must be filled in",
-        };
-      }
-    });
-    setErrors(submitErrors);
-    return _.isEmpty(submitErrors);
-  };
-
   const onSubmitHandeler = (event) => {
     event.preventDefault();
-    if (validForSubmission()) {
-      addNewReview(reviewRecord);
-    }
+    addNewReview(review);
   };
 
-  let articleId = props.articleId;
-  const addNewReview = (reviewRecord) => {
-    fetch(`/api/v1/articles/${articleId}/reviews`, {
+  const clearForm = () => {
+    setReview({
+      rating: "",
+      body: "",
+    });
+  };
+
+  const addNewReview = (review) => {
+    fetch(`/api/v1/articles/${props.articleId}/reviews`, {
       method: "POST",
       credentials: "same-origin",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(reviewRecord),
+      body: JSON.stringify(review),
     })
       .then((response) => {
         if (response.ok) {
@@ -64,16 +53,14 @@ const ReviewFormContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        if (body) {
-          setReviewRecord(body);
-          window.location.reload();
-          // setReviewRecord([...reviewRecord, body]);
-          // } else if ((body.error[0] = "you need to be signed in first")) {
-          //   // debugger;
-          //   history.go("/users/sign_in");
-          // } else if (body.errors) {
-          //   // debugger;
-          //   setErrors(body.errors);
+        // debugger;
+        if (body.review) {
+          props.addReview(body.review);
+          clearForm();
+        } else if (body.error[0] === "You need to be signed in first") {
+          setErrors("Please sign in to make reviews");
+        } else {
+          setErrors(body.error[0]);
         }
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`));
@@ -81,7 +68,7 @@ const ReviewFormContainer = (props) => {
 
   return (
     <form className="callout secondary" onSubmit={onSubmitHandeler}>
-      <ErrorList errors={errors} />
+      {errorMessage}
       <h1>New Review Form</h1>
       <div>
         <label htmlFor="rating">Rating:</label>
@@ -90,7 +77,7 @@ const ReviewFormContainer = (props) => {
           id="rating"
           name="rating"
           onChange={handleInputChange}
-          value={reviewRecord.rating}
+          value={review.rating}
         />
       </div>
 
@@ -101,7 +88,7 @@ const ReviewFormContainer = (props) => {
           id="body"
           name="body"
           onChange={handleInputChange}
-          value={reviewRecord.body}
+          value={review.body}
         />
       </div>
 
