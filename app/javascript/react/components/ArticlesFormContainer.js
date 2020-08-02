@@ -79,36 +79,61 @@ const ArticlesFormContainer = (props) => {
   }
 
   return (
-    <form className="" onSubmit={onSubmitHandler}>
-      <ErrorList errors={errors} />
-      <h1> New Article Form</h1>
+    <div className="container">
+      <div id="page-content" onSubmit={onSubmitHandler}>
+        <h1 className="text-center mt-4"> New Article Form</h1>
 
-      <div>
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          onChange={handleInputChange}
-          value={newArticle.title}
-        />
-      </div>
+        <div className="row justify-content-center">
+          <div className="col-10">
+            <ErrorList errors={errors} />
+            <form className=" shadow p-3 mb-3 bg-info rounded">
+              <div className="form-group row">
+                <label htmlFor="title" className="col-2 col-form-label">
+                  Title:
+                </label>
+                <div className="col-10">
+                  <input
+                    className="form-control"
+                    type="text"
+                    id="title"
+                    name="title"
+                    onChange={handleInputChange}
+                    value={newArticle.title}
+                    placeholder="Title of the Article"
+                  />
+                </div>
+              </div>
 
-      <div>
-        <label htmlFor="description">Description:</label>
-        <textarea
-          type="text"
-          id="description"
-          name="description"
-          onChange={handleInputChange}
-          value={newArticle.description}
-        />
-      </div>
+              <div className="form-group row">
+                <label htmlFor="description" className="col-2 col-form-label">
+                  Description:
+                </label>
+                <div className="col-10">
+                  <textarea
+                    className="form-control"
+                    rows="10"
+                    type="text"
+                    id="description"
+                    name="description"
+                    onChange={handleInputChange}
+                    value={newArticle.description}
+                    placeholder="Description of the Article"
+                  />
+                </div>
+              </div>
 
-      <div className="button-group">
-        <input className="button" type="submit" value="Submit" />
+              <div className="form-group row justify-content-center">
+                <input
+                  className="btn btn-outline-light btn-lg"
+                  type="submit"
+                  value="Submit"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-    </form>
+    </div>
   );
 };
 

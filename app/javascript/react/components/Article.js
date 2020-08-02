@@ -26,12 +26,14 @@ const Article = ({
 
   return (
     <div key={key}>
-      <h3>Author: {article_creater}</h3>
-      <h3>Article Name: {title}</h3>
-      <h4>Description:</h4>
-      <h4>{description}</h4>
-      <h3>Reviews</h3>
-      {articleReviews}
+      <div>
+        <h3>Author: {article_creater}</h3>
+        <h3>Article Name: {title}</h3>
+        <h4>Description:</h4>
+        <h4>{description}</h4>
+        <h3>Reviews</h3>
+        {articleReviews}
+      </div>
       <Link to="/">Home</Link>
     </div>
   );
