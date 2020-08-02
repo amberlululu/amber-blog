@@ -2,8 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Review from "./Review";
 
-const Article = ({ id, key, user, title, description, reviews }) => {
+const Article = ({
+  id,
+  key,
+  user,
+  title,
+  description,
+  reviews,
+  article_creater,
+}) => {
   const articleReviews = reviews.map((review) => {
+    debugger;
     return (
       <Review
         key={review.id}
@@ -17,7 +26,7 @@ const Article = ({ id, key, user, title, description, reviews }) => {
 
   return (
     <div key={key}>
-      <h3>Author: {user}</h3>
+      <h3>Author: {article_creater}</h3>
       <h3>Article Name: {title}</h3>
       <h4>Description:</h4>
       <h4>{description}</h4>
