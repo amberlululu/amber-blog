@@ -12,6 +12,6 @@ RSpec.describe Article, type: :model do
   
     it do
       should validate_length_of(:description).
-      is_at_least(10).is_at_most(300)
+      is_at_least(10).is_at_most(1000)
     end
 end

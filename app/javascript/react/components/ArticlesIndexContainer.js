@@ -32,6 +32,8 @@ const ArticlesIndexContainer = (props) => {
         key={article.id}
         title={article.title}
         description={article.description}
+        created_at={article.created_at}
+        article_creater={article.article_creater}
       />
     );
   });
@@ -39,8 +41,12 @@ const ArticlesIndexContainer = (props) => {
   return (
     <div>
       <h1 className="text-center">Listing all Articles</h1>
+      <div className="text-center">
+        <Link to="/articles/new" className="btn btn-outline-success">
+          Create New Article
+        </Link>
+      </div>
       <h3>{articletiles}</h3>
-      <Link to="/articles/new">Create New Article</Link>
     </div>
   );
 };

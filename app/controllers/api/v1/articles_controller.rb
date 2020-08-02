@@ -1,4 +1,5 @@
 class Api::V1::ArticlesController < ApiController
+  protect_from_forgery unless: -> { request.format.json? }
   before_action :authenticate_user, except: [:index, :show]
   before_action :authorize_user, except: [:index, :show, :create]
   
@@ -28,7 +29,7 @@ class Api::V1::ArticlesController < ApiController
   def destroy   
     article = Article.find(params[:id])    
     article.destroy
-    render json: articles
+    render json: {redirect: true}
   end 
 
 

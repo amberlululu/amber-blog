@@ -11,7 +11,7 @@ const ArticlesFormContainer = (props) => {
 
   const [errors, setErrors] = useState({});
 
-  const [redirect, setRedirect] = useState(null);
+  const [shouldRedirect, setShouldRedirect] = useState(false);
 
   const handleInputChange = (event) => {
     setNewArticle({
@@ -63,8 +63,8 @@ const ArticlesFormContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        if (body.id) {
-          setRedirect(body.id);
+        if (body.article) {
+          setShouldRedirect(true);
         } else if ((body.error[0] = "you need to be signed in first")) {
           props.history.go("/users/sign_in");
         } else if (body.error) {
@@ -74,8 +74,8 @@ const ArticlesFormContainer = (props) => {
       .catch((error) => console.error(`Error in fetch: ${error.message}`));
   };
 
-  if (redirect !== null) {
-    return <Redirect to={`/articles/${redirect}`} />;
+  if (shouldRedirect) {
+    return <Redirect to="/articles" />;
   }
 
   return (
