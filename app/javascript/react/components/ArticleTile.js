@@ -11,11 +11,23 @@ const ArticleTile = ({
   article_creater,
 }) => {
   const [shouldRedirect, setShouldRedirect] = useState(false);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState("");
 
-  let errorMessage = <p></p>;
+  let errorMessage;
   if (errors !== "") {
-    errorMessage = <p>{errors}</p>;
+    errorMessage = (
+      <div className="alert alert-danger container" role="alert">
+        <button
+          type="button"
+          className="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h6>{errors}</h6>
+      </div>
+    );
   }
 
   const removeArticle = () => {
@@ -38,10 +50,11 @@ const ArticleTile = ({
       })
       .then((response) => response.json())
       .then((body) => {
+        // debugger;
         if (body.redirect) {
           setShouldRedirect(true);
-        } else {
-          setErrors(body.error);
+        } else if (body.error) {
+          setErrors("Only admins have access to this feature");
         }
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`));
@@ -60,6 +73,7 @@ const ArticleTile = ({
 
   return (
     <div>
+      {errorMessage}
       <div className="text-center container">
         <div className="row justify-content-md-center">
           <div className="col-8 mt-4">

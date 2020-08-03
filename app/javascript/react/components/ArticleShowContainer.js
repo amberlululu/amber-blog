@@ -33,6 +33,10 @@ const ArticleShowContainer = (props) => {
     setReviews([...reviews, newReview]);
   };
 
+  const updateReviews = (updatedReview) => {
+    setReviews(updatedReview);
+  };
+
   return (
     <div>
       <Article
@@ -41,7 +45,10 @@ const ArticleShowContainer = (props) => {
         title={articleRecord.title}
         description={articleRecord.description}
         article_creater={articleRecord.article_creater}
+        updateReviews={updateReviews}
+        admin={articleRecord.admin_user}
         reviews={reviews}
+        articleId={articleId}
       />
       <ReviewFormContainer articleId={articleId} addReview={addReview} />
     </div>
