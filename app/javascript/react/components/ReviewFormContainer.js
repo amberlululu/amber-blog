@@ -53,49 +53,79 @@ const ReviewFormContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        // debugger;
-        if (body.review) {
-          props.addReview(body.review);
-          clearForm();
-        } else if (body.error[0] === "You need to be signed in first") {
-          setErrors("Please sign in to make reviews");
+        debugger;
+        if (body.error) {
+          if (body.error[0] === "You need to be signed in first") {
+            setErrors("Please sign in to make reviews");
+          }
         } else {
-          setErrors(body.error[0]);
+          if (body.review) {
+            props.addReview(body.review);
+            clearForm();
+          } else if (body.errors[0] === "Rating is not a number") {
+            setErrors("Rating is not a number");
+          } else if (body.errors[0] === "Rating can't be blank") {
+            setErrors("Rating can't be blank");
+          } else if (
+            body.errors[0] === "Rating must be less than or equal to 5"
+          ) {
+            setErrors("Rating must be less than or equal to 5");
+          } else if (
+            body.errors[0] === "Rating must be greater than or equal to 1"
+          ) {
+            setErrors("Rating must be greater than or equal to 1");
+          } else if (body.errors[0] === "Body can't be blank") {
+            setErrors("Body can't be blank");
+          } else if (
+            body.errors[0] === "Body is too short (minimum is 10 characters)"
+          ) {
+            setErrors("Body is too short (minimum is 10 characters)");
+          }
         }
       })
       .catch((error) => console.error(`Error in fetch: ${error.message}`));
   };
 
   return (
-    <form className="callout secondary" onSubmit={onSubmitHandeler}>
-      {errorMessage}
-      <h1>New Review Form</h1>
-      <div>
-        <label htmlFor="rating">Rating:</label>
-        <input
-          type="integer"
-          id="rating"
-          name="rating"
-          onChange={handleInputChange}
-          value={review.rating}
-        />
-      </div>
+    <div className="container">
+      <form className="background-color" onSubmit={onSubmitHandeler}>
+        {errorMessage}
+        <h1>New Review Form</h1>
+        <div className="form-group container">
+          <label htmlFor="rating">Rating:</label>
+          <input
+            className="form-control"
+            type="integer"
+            id="rating"
+            name="rating"
+            onChange={handleInputChange}
+            value={review.rating}
+            placeholder="1-5"
+          ></input>
+        </div>
 
-      <div>
-        <label htmlFor="body">Body:</label>
-        <input
-          type="text"
-          id="body"
-          name="body"
-          onChange={handleInputChange}
-          value={review.body}
-        />
-      </div>
+        <div className="form-group container">
+          <label htmlFor="body">Body:</label>
+          <textarea
+            className="form-control"
+            rows="3"
+            type="text"
+            id="body"
+            name="body"
+            onChange={handleInputChange}
+            value={review.body}
+          />
+        </div>
 
-      <div className="button-group">
-        <input type="submit" className="button" value="Submit " />
-      </div>
-    </form>
+        <div className="form-group row justify-content-center">
+          <input
+            className="btn btn-outline-light btn-lg"
+            type="submit"
+            value="Submit"
+          />
+        </div>
+      </form>
+    </div>
   );
 };
 

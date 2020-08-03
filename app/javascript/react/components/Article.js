@@ -1,40 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Review from "./Review";
 
 const Article = ({
   id,
   key,
-  user,
   title,
   description,
   reviews,
   article_creater,
+  updateReviews,
+  admin,
+  articleId,
 }) => {
   const articleReviews = reviews.map((review) => {
-    debugger;
     return (
-      <Review
-        key={review.id}
-        id={review.id}
-        rating={review.rating}
-        body={review.body}
-        user={review.commenter_name}
-      />
+      <div key={review.id}>
+        <Review
+          id={review.id}
+          rating={review.rating}
+          body={review.body}
+          user={review.commenter_name}
+          updateReviews={updateReviews}
+          admin={admin}
+          articleId={articleId}
+        />
+      </div>
     );
   });
 
   return (
     <div key={key}>
-      <div>
-        <h3>Author: {article_creater}</h3>
-        <h3>Article Name: {title}</h3>
-        <h4>Description:</h4>
-        <h4>{description}</h4>
+      <div className="container">
+        <h3>{title}</h3>
+        <p>
+          <em>{description}</em>
+        </p>
         <h3>Reviews</h3>
         {articleReviews}
       </div>
-      <Link to="/">Home</Link>
     </div>
   );
 };

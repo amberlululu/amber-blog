@@ -64,15 +64,13 @@ RSpec.describe Api::V1::ArticlesController, type: :controller do
     context "when a request with the correct params is made" do
       it "adds a new article to the database" do
        sign_in user1
-        previous_count = Article.count
 
-        post :create, params: article_data
-        
+        previous_count = Article.count
+        post :create, params: article_data     
         new_count = Article.count
 
         expect(response.status).to eq 200
         expect(response.content_type).to eq "application/json"
-
         expect(new_count).to eq(previous_count + 1)
       end
   
@@ -107,27 +105,20 @@ RSpec.describe Api::V1::ArticlesController, type: :controller do
     end
   end 
 
-  # describe "DELETE#destroy" do
-  #   let!(:user1) { FactoryBot.create(:user) }
-  #   let!(:article1) { {article: {title: "Global Business", description: "Global business refers to international trade whereas a global business is a company doing business across the world.", user: user1}} }
+  describe "DELETE#destroy" do
+    let!(:user1) { FactoryBot.create(:user) }
+    let!(:article1) {Article.create(title:"Topic about Glowbal Worming",description:"Collectively, global warming and its effects are known as climate change.", user_id: user1.id)}
+   
+    it "should destroy the selected article if admin" do
+      admin_user = FactoryBot.create(:user, :admin)
+      sign_in admin_user
 
-  #   it "should destroy the selected article if admin" do
-  #     admin_user = FactoryBot.create(:user, :admin)
-  #     sign_in admin_user
+      previous_count = Article.count
+      delete :destroy, params: {id: article1.id }     
+      new_count = Article.count
 
-  #     previous_count = Article.count
-
-  #     delete :destroy, params: article1
-      
-  #     new_count = Article.count
-
-  #     expect(response.status).to eq 200
-  #     expect(response.content_type).to eq "application/json"
-
-  #     expect(new_count).to eq(previous_count - 1)
-  #   end
-
-  #   it "should not destroy if not signed in" do
-  #   end
-  # end
+      expect(response.content_type).to eq "application/json"
+      expect(new_count).to eq(previous_count - 1)
+    end
+  end
 end

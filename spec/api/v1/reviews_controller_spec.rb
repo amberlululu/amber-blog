@@ -46,4 +46,20 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
     end
   end
 
+  describe "DELETE#destroy" do
+    let!(:user1){FactoryBot.create(:user)}
+    let!(:article1) {Article.create(title:"Topic about Glowbal Worming", description:"Collectively, global warming and its effects are known as climate change.", user_id: user1.id)}
+    let!(:review1){Review.create(rating: 4, body:"Your article is very impressive", article: article1, user: user1)}
+
+    it "should destroy the selected review if admin" do
+      admin_user = FactoryBot.create(:user, :admin)
+      sign_in admin_user
+  
+      previous_count = article1.reviews.count
+      delete :destroy, params: {article_id: article1.id, id: review1.id}
+      new_count = article1.reviews.count
+      
+      expect(new_count).to eq(previous_count - 1)
+    end 
+  end
 end 

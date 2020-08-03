@@ -1,6 +1,7 @@
 class Api::V1::ReviewsController < ApiController
-  before_action :authenticate_user
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_user
+  before_action :authorize_user, except: [:create]
 
   def create 
     article = Article.find(params[:article_id])
@@ -16,6 +17,13 @@ class Api::V1::ReviewsController < ApiController
       render json: {errors: new_review.errors.full_messages}
     end
   end
+  
+  def destroy
+    review = Review.find(params["id"])
+    reviews = review.article.reviews
+    review.destroy
+    render json: reviews
+  end
 
   private
   def review_params
@@ -25,6 +33,12 @@ class Api::V1::ReviewsController < ApiController
   def authenticate_user
     if !user_signed_in?
       render json: {error: ["You need to be signed in first"]}
+    end
+  end
+
+  def authorize_user
+    if !user_signed_in? || !current_user.admin?
+      render json: { error: "Only Admins May Delete Reviews" }
     end
   end
 
