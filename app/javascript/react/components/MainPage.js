@@ -8,7 +8,11 @@ const MainPage = (props) => {
           <div className="container">
             <h1 className="display-4">Fluid words</h1>
             <p className="lead">We are here waiting for your story!</p>
-            <a className="btn btn-info btn-lg" href="#" role="button">
+            <a
+              className="btn btn-info btn-lg"
+              href="/users/sign_up"
+              role="button"
+            >
               Sign Up
             </a>
           </div>
