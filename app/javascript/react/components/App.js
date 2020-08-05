@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ArticleShowContainer from "./ArticleShowContainer";
 import MainPage from "./MainPage";
 import Weather from "./Weather";
+import FoodRecipe from "./FoodRecipe";
 
 export const App = (props) => {
   return (
@@ -15,6 +16,7 @@ export const App = (props) => {
         <Route exact path="/articles/new" component={ArticlesFormContainer} />
         <Route exact path="/articles/:id" component={ArticleShowContainer} />
         <Route exact path="/weather" component={Weather} />
+        <Route exact path="/recipes" component={FoodRecipe} />
       </Switch>
     </BrowserRouter>
   );
