@@ -88,7 +88,7 @@ const ReviewFormContainer = (props) => {
 
   return (
     <div className="container">
-      <form className="background-color" onSubmit={onSubmitHandeler}>
+      <form className="form-color" onSubmit={onSubmitHandeler}>
         {errorMessage}
         <h1>New Review Form</h1>
         <div className="form-group container">

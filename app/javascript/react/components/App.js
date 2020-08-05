@@ -4,6 +4,7 @@ import ArticlesFormContainer from "./ArticlesFormContainer";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ArticleShowContainer from "./ArticleShowContainer";
 import MainPage from "./MainPage";
+import Weather from "./Weather";
 
 export const App = (props) => {
   return (
@@ -13,6 +14,7 @@ export const App = (props) => {
         <Route exact path="/articles" component={ArticlesIndexContainer} />
         <Route exact path="/articles/new" component={ArticlesFormContainer} />
         <Route exact path="/articles/:id" component={ArticleShowContainer} />
+        <Route exact path="/weather" component={Weather} />
       </Switch>
     </BrowserRouter>
   );
