@@ -43,7 +43,7 @@ const MainPage = (props) => {
               alt="..."
             />
             <div className="card-body">
-              <h5 classname="card-title">Sweets</h5>
+              <h5 className="card-title">Sweets</h5>
               <p className="card-text">
                 This card has supporting text below as a natural lead-in to
                 additional content.
@@ -56,7 +56,7 @@ const MainPage = (props) => {
           <div className="card">
             <img
               src="https://images.unsplash.com/photo-1557473235-6cfa0d95515f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-              class="card-img-top"
+              className="card-img-top"
               alt="..."
             />
             <div className="card-body">
