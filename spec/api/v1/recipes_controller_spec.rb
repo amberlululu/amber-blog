@@ -1,34 +1,34 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::RecipesController, type: :controller do
-  # describe "GET#Index" do
-  #   let!(:user1) { FactoryBot.create(:user) }   
-  #   # let!(:recipe1) {{recipe:{label:"Apple & blueberry Bircher", image:"https://www.edamam.com/web-img/340/340bc6ce5f396151a0f58da90d7a3102.jpg", url: "http://www.bbcgoodfood.com/recipes/1755652/apple-and-blueberry-bircher"},user_id: user1.id}}
-  #   let!(:recipe1) {Recipe.create(label: "Water Toast", image: "https://www.edamam.com/web-img/3c2/3c222611473e0d79953a24cd91a0c8e2.jpg", url: "http://www.saveur.com/article/Recipes/Water-Toast")}
+  describe "GET#Index" do
+    let!(:user1) { FactoryBot.create(:user) }   
+    # let!(:recipe1) {{recipe:{label:"Apple & blueberry Bircher", image:"https://www.edamam.com/web-img/340/340bc6ce5f396151a0f58da90d7a3102.jpg", url: "http://www.bbcgoodfood.com/recipes/1755652/apple-and-blueberry-bircher"},user_id: user1.id}}
+    let!(:recipe1) {Recipe.create(label: "Water Toast", image: "https://www.edamam.com/web-img/3c2/3c222611473e0d79953a24cd91a0c8e2.jpg", url: "http://www.saveur.com/article/Recipes/Water-Toast")}
    
-  #   it "returns a status of 200" do     
-  #     sign_in user1
-  #     get :index
+    it "returns a status of 200" do     
+      sign_in user1
+      get :index
     
-  #     expect(response.status).to eq 200
-  #     expect(response.content_type).to eq "application/json"
-  #   end
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq "application/json"
+    end
 
-  #   it "returns all the recipes in the database" do
-  #     sign_in user1
-  #     get :index
-  #     returned_json = JSON.parse(response.body)
-  #    binding.pry
-  #     expect(returned_json[""][0]["label"]).to eq()
-  #     expect(returned_json[""][0]["url"]).to eq()
-  #     expect(returned_json[""][0]["image"]).to eq()
+    it "returns all the recipes in the database" do
+      sign_in user1
+      get :index
+      returned_json = JSON.parse(response.body)
+     binding.pry
+      expect(returned_json[""][0]["label"]).to eq()
+      expect(returned_json[""][0]["url"]).to eq()
+      expect(returned_json[""][0]["image"]).to eq()
 
-  #     expect(returned_json[""][1][""]).to eq()
-  #     expect(returned_json[""][1][""]).to eq()
-  #     expect(returned_json[""][1][""]).to eq()
+      expect(returned_json[""][1][""]).to eq()
+      expect(returned_json[""][1][""]).to eq()
+      expect(returned_json[""][1][""]).to eq()
 
-  #   end
-  # end
+    end
+  end
 
   describe "POST#Create" do
     let!(:user1) { FactoryBot.create(:user) }

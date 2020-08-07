@@ -5,13 +5,30 @@ import Alert from "./Alert";
 import RecipeRow from "./RecipeRow";
 
 const FoodRecipe = () => {
-  const APP_ID = "d0c42674";
-  const APP_KEY = "1aac8386ed568ff61ffa895046db59ec";
-
   const [query, setQuery] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [alert, setAlert] = useState("");
   const [saveRecipes, setSaveRecipes] = useState([]);
+
+  const getData = () => {
+    if (query !== "") {
+      fetch(`api/v1/recipes/search?query=${query}`)
+        .then((res) => res.json())
+        .then((result) => {
+          if (!result.result.more) {
+            return setAlert("No food with such name");
+          } else {
+            setQuery("");
+            setRecipes(result.result.hits);
+            setAlert("");
+
+            console.log(result.hits);
+          }
+        });
+    } else {
+      setAlert("Please fill the form");
+    }
+  };
 
   useEffect(() => {
     fetch("/api/v1/recipes")
@@ -56,26 +73,6 @@ const FoodRecipe = () => {
       />
     );
   });
-
-  const getData = () => {
-    if (query !== "") {
-      fetch(
-        `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
-      )
-        .then((res) => res.json())
-        .then((result) => {
-          if (!result.more) {
-            return setAlert("No food with such name");
-          }
-          setQuery("");
-          setRecipes(result.hits);
-          setAlert("");
-          console.log(result.hits);
-        });
-    } else {
-      setAlert("Please fill the form");
-    }
-  };
 
   const onSubmit = (e) => {
     e.preventDefault();

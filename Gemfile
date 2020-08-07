@@ -60,3 +60,5 @@ gem 'webpacker', '~> 3.3'
 gem 'faker'
 gem "active_model_serializers"
 gem 'dotenv-rails'
+
+gem 'faraday', '~> 0.9.2'
