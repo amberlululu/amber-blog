@@ -17,6 +17,7 @@ export const App = (props) => {
         <Route exact path="/articles/:id" component={ArticleShowContainer} />
         <Route exact path="/weather" component={Weather} />
         <Route exact path="/recipes" component={FoodRecipe} />
+        <Route exact path="/chats/:id" component={ChatContainer} />
       </Switch>
     </BrowserRouter>
   );

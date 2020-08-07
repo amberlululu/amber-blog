@@ -58,3 +58,4 @@ gem 'webpacker', '~> 3.3'
 
 gem 'faker'
 gem "active_model_serializers"
+gem 'redis', '~> 4.0'
