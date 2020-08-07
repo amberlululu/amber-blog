@@ -1,4 +1,5 @@
 @import "bootstrap";
+
 .navbar {
   background-color: black !important;
 }
@@ -41,6 +42,14 @@ footer {
   left: 0;
   width: 100%;
   height: 10px;
+}
+
+.card-header {
+  background-color: #ede4da;
+}
+
+.card-footer {
+  background-color: #ede4da;
 }
 
 .distance {
@@ -252,18 +261,28 @@ h1 {
 }
 
 .recipe a {
-  font-size: 1.8rem;
-  color: #40b48e;
+  font-size: 1rem;
+  color: #f85a6e;
 }
 
-.recipe button {
+.ingre {
   font-size: 2rem;
   text-transform: uppercase;
   color: #fff;
-  background-color: #40b48e;
+  background-color: #f69a23;
   border: none;
   border-radius: 0.5rem;
   height: 3rem;
+}
+
+.list {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  height: 3rem;
+  width: 200px;
 }
 
 .ingredient-list {

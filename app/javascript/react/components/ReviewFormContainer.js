@@ -53,7 +53,6 @@ const ReviewFormContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        debugger;
         if (body.error) {
           if (body.error[0] === "You need to be signed in first") {
             setErrors("Please sign in to make reviews");

@@ -15,8 +15,7 @@ article1 = Article.create(title:"Life Is About Experiences", description:"I am a
 
 review1 = Review.create(rating:5, body:"I love your article!!! Break your routine. Try something new. Better your life.", user_id: user2.id, article_id: article1.id)
   
-  
-  
+
   
   
   
