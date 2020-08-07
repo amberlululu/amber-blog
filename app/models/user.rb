@@ -16,6 +16,9 @@ class User < ApplicationRecord
   
   has_many :articles
 
+  has_many :user_recipes
+  has_many :recipes, through: :user_recipes
+
   # mount_uploader :profile_photo, ProfilePhotoUploader
 
   def admin?

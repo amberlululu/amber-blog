@@ -50,7 +50,6 @@ const ArticleTile = ({
       })
       .then((response) => response.json())
       .then((body) => {
-        // debugger;
         if (body.redirect) {
           setShouldRedirect(true);
         } else if (body.error) {
@@ -78,7 +77,9 @@ const ArticleTile = ({
         <div className="row justify-content-md-center">
           <div className="col-8 mt-4">
             <div className="card text-center shadow mb-5 bg-white rounded">
-              <div className="card-header font-italic">{article_creater}</div>
+              <div className="card-header font-italic">
+                <h6>{article_creater}</h6>
+              </div>
               <div className="card-body">
                 <h5>
                   <Link
