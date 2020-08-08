@@ -30,7 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  
+  gem "vcr"
+  gem "webmock" 
 end
 
 group :development do
@@ -63,5 +64,3 @@ gem 'dotenv-rails'
 
 gem 'faraday', '~> 0.9.2'
 
-gem "vcr"
-gem "webmock"
