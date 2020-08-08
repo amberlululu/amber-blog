@@ -7,10 +7,14 @@ Rails.application.routes.draw do
   get '/articles/:id', to: "homes#index"
   get '/weather', to: "homes#index"
   get '/recipes', to: "homes#index"
+  
    
   namespace :api do
     namespace :v1 do
-      resources :recipes, only:[:create, :index, :destroy]
+      get '/recipes/search' => "recipes#search"
+      resources :recipes, only: [:create, :index, :destroy, :search]
+      get '/weathers/search' => "weathers#search"
+      resources :weathers, only: [:search]
       resources :articles, only: [:index, :show, :create, :destroy] do
         resources :reviews, only:[:create, :destroy]
       end     
