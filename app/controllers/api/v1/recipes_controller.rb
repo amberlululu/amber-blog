@@ -32,7 +32,8 @@ class Api::V1::RecipesController < ApiController
     render json: recipes
   end   
 
-  def search      
+  def search 
+         
     query = params[:query]
     url = "https://api.edamam.com/search?q=#{query}&app_id=#{ENV["APP_ID"]}&app_key=#{ENV["APP_KEY"]}"
     api_response = Faraday.get(url)  
