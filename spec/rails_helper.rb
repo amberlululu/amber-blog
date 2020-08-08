@@ -1,5 +1,7 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'vcr'
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
@@ -35,6 +37,25 @@ rescue ActiveRecord::PendingMigrationError => e
   puts e.to_s.strip
   exit 1
 end
+
+VCR.configure do |config|
+  
+  config.allow_http_connections_when_no_cassette = false
+  config.cassette_library_dir = File.expand_path('cassettes', __dir__)
+  config.hook_into :faraday
+  config.ignore_request { ENV['DISABLE_VCR'] }
+  config.ignore_localhost = true
+  config.default_cassette_options = {
+    record: :new_episodes
+  }
+  config.filter_sensitive_data('<WEATHER_API_KEY>') { ENV["WEATHER_API_KEY"] }
+  config.filter_sensitive_data('<APP_KEY>') { ENV["APP_KEY"] }
+  config.filter_sensitive_data('<APP_ID>') { ENV["APP_ID"] }
+
+  WebMock.disable_net_connect!(allow_localhost: true)
+  
+end 
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -63,4 +84,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  
 end

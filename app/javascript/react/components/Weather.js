@@ -3,14 +3,20 @@ import React, { useState } from "react";
 const Weather = () => {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState({});
+  const [errors, setErrors] = useState("");
 
   const search = (evt) => {
     if (evt.key === "Enter") {
       fetch(`api/v1/weathers/search?query=${query}`)
         .then((res) => res.json())
         .then((result) => {
-          setQuery("");
-          setWeather(result.result);
+          if (result.error) {
+            setErrors(result.error[0]);
+          } else {
+            setQuery("");
+            setWeather(result.result);
+            setErrors("");
+          }
         });
     }
   };
@@ -50,6 +56,7 @@ const Weather = () => {
 
   return (
     <div>
+      {errors}
       <p className="text-center">Search Weather</p>
       <div
         className={
