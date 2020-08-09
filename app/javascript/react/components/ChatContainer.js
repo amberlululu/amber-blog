@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Message from "../components/Message";
-import TextFieldWithSubmit from "../components/TextFieldWithSubmit";
+import Message from "./Message";
+import TextFieldWithSubmit from "./TextFieldWithSubmit";
 
 const ChatContainer = (props) => {
   const [user, setUser] = useState({});
@@ -14,6 +14,7 @@ const ChatContainer = (props) => {
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
+        // debugger;
         let { ok } = response;
         if (ok) {
           return response.json();
@@ -54,14 +55,13 @@ const ChatContainer = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    debugger;
     // Send info to the receive method on the back end
     App.chatChannel.send({
       message: message,
       user: user,
     });
 
-    // handleClearForm();
+    handleClearForm();
   };
 
   const handleMessageChange = (event) => {
@@ -80,7 +80,7 @@ const ChatContainer = (props) => {
   }, this);
 
   return (
-    <div>
+    <div className="container" id="chat">
       <div className="callout chat" id="chatWindow">
         {messagesComponents}
       </div>

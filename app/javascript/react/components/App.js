@@ -6,6 +6,7 @@ import ArticleShowContainer from "./ArticleShowContainer";
 import MainPage from "./MainPage";
 import Weather from "./Weather";
 import FoodRecipe from "./FoodRecipe";
+import ChatContainer from "./ChatContainer";
 
 export const App = (props) => {
   return (
