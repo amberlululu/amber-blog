@@ -30,7 +30,7 @@ const Article = ({
   });
 
   return (
-    <div key={key}>
+    <div key={id}>
       <div className="container">
         <h3>{title}</h3>
         <p>

@@ -43,6 +43,10 @@ footer {
   height: 10px;
 }
 
+.alert-danger {
+  margin-top: 50px;
+}
+
 .card-header {
   background-color: #ffb238;
 }
@@ -178,7 +182,7 @@ h1 {
   position: relative;
 }
 
-.alert {
+.warning {
   position: absolute;
   top: -3rem;
   left: 0;
@@ -188,7 +192,7 @@ h1 {
   padding: 0.2rem;
 }
 
-.alert h3 {
+.warning h3 {
   font-size: 1.8rem;
   color: red;
   font-weight: 400;
