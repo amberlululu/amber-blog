@@ -7,6 +7,7 @@ const ArticlesFormContainer = (props) => {
   const [newArticle, setNewArticle] = useState({
     title: "",
     description: "",
+    image: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -118,6 +119,24 @@ const ArticlesFormContainer = (props) => {
                     onChange={handleInputChange}
                     value={newArticle.description}
                     placeholder="Description of the Article"
+                  />
+                </div>
+              </div>
+
+              <div className="form-group row">
+                <label htmlFor="image" className="col-2 col-form-label">
+                  Image:
+                </label>
+                <div className="col-10">
+                  <input
+                    className="form-control"
+                    type="text"
+                    id="image"
+                    name="image"
+                    size="100"
+                    onChange={handleInputChange}
+                    value={newArticle.image}
+                    placeholder="Image of the Article"
                   />
                 </div>
               </div>

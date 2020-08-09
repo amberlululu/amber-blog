@@ -32,6 +32,7 @@ const ArticlesIndexContainer = (props) => {
         key={article.id}
         title={article.title}
         description={article.description}
+        image={article.image}
         created_at={article.created_at}
         article_creater={article.article_creater}
       />

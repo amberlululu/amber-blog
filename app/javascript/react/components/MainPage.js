@@ -33,7 +33,7 @@ const MainPage = (props) => {
               </p>
             </div>
             <div className="card-footer">
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <small className="text-muted"></small>
             </div>
           </div>
           <div className="card">
@@ -50,7 +50,7 @@ const MainPage = (props) => {
               </p>
             </div>
             <div className="card-footer">
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <small className="text-muted"></small>
             </div>
           </div>
           <div className="card">
@@ -68,7 +68,7 @@ const MainPage = (props) => {
               </p>
             </div>
             <div className="card-footer">
-              <small className="text-muted">Last updated 3 mins ago</small>
+              <small className="text-muted"></small>
             </div>
           </div>
         </div>
