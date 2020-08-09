@@ -1,5 +1,5 @@
 class ArticleShowSerializer < ActiveModel::Serializer
-  attributes :id, :title, :description, :article_creater, :admin_user
+  attributes :id, :title, :description, :image, :article_creater, :admin_user
 
   def article_creater
     object.user.username

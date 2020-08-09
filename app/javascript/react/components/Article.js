@@ -6,6 +6,7 @@ const Article = ({
   key,
   title,
   description,
+  image,
   reviews,
   article_creater,
   updateReviews,
@@ -29,12 +30,13 @@ const Article = ({
   });
 
   return (
-    <div key={key}>
+    <div key={id}>
       <div className="container">
         <h3>{title}</h3>
         <p>
           <em>{description}</em>
         </p>
+        <img src={image} alt="item image" />
         <h3>Reviews</h3>
         {articleReviews}
       </div>
