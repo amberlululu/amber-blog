@@ -20,7 +20,7 @@ RSpec.describe Api::V1::RecipesController, type: :controller do
       sign_in user1
       get :index
       returned_json = JSON.parse(response.body)
-    #  binding.pry
+  
       expect(returned_json[0]["label"]).to eq(recipe1.label)
       expect(returned_json[0]["url"]).to eq(recipe1.url)
       expect(returned_json[0]["image"]).to eq(recipe1.image)
@@ -77,5 +77,26 @@ RSpec.describe Api::V1::RecipesController, type: :controller do
       expect(new_count).to eq(previous_count - 1)
     end
   end
+
+  # describe 'GET#search' do
+  #   let!(:user1) { FactoryBot.create(:user) } 
+
+  #   it 'makes a request to the external API based on the params' do
+  #     VCR.use_cassette('get_recipes') do
+  #       sign_in user1
+  #       get :search, params: {query: 'chicken'}
+  #       parsed_response = JSON.parse(response.body)
+  #       results = parsed_response['result']['hits']
+      
+  #       expect(results[0]["recipe"]).to have_key 'label'
+  #       expect(results[0]["recipe"]).to have_key 'url'
+  #       expect(results[0]["recipe"]).to have_key 'image'
+        
+  #       expect(results[0]["recipe"]['label']).to eq 'Chicken Vesuvio'
+  #       expect(results[0]["recipe"]['image']).to eq 'https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg'
+  #       expect(results[0]["recipe"]['url']).to eq 'http://www.seriouseats.com/recipes/2011/12/chicken-vesuvio-recipe.html'
+  #     end
+  #   end
+  # end
 
 end 

@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.openweathermap.org/data/2.5/weather?appid=<WEATHER_API_KEY>&q=boston&units=metric
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+  response:
+    status:
+      code: 200
+      message:
+    headers:
+      server:
+      - openresty
+      date:
+      - Sat, 08 Aug 2020 21:52:54 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '461'
+      connection:
+      - close
+      x-cache-key:
+      - "/data/2.5/weather?q=boston&units=metric"
+      access-control-allow-origin:
+      - "*"
+      access-control-allow-credentials:
+      - 'true'
+      access-control-allow-methods:
+      - GET, POST
+    body:
+      encoding: UTF-8
+      string: '{"coord":{"lon":-71.06,"lat":42.36},"weather":[{"id":800,"main":"Clear","description":"clear
+        sky","icon":"01d"}],"base":"stations","main":{"temp":26.58,"feels_like":25.22,"temp_min":23.33,"temp_max":29.44,"pressure":1020,"humidity":39},"visibility":10000,"wind":{"speed":2.6,"deg":150},"clouds":{"all":8},"dt":1596923281,"sys":{"type":1,"id":4967,"country":"US","sunrise":1596879874,"sunset":1596930908},"timezone":-14400,"id":4930956,"name":"Boston","cod":200}'
+  recorded_at: Sat, 08 Aug 2020 21:52:54 GMT
+recorded_with: VCR 6.0.0
