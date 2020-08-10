@@ -33,12 +33,8 @@ class Api::V1::RecipesController < ApiController
   end   
 
   def search 
-         
-    query = params[:query]
-    url = "https://api.edamam.com/search?q=#{query}&app_id=#{ENV["APP_ID"]}&app_key=#{ENV["APP_KEY"]}"
-    api_response = Faraday.get(url)  
-    parsed_response = JSON.parse(api_response.body)
-    result = parsed_response
+    result = edamam_recipe_search(params[:query])
+    
     # take this data structure and clean it up 
     render json: {result: result}
   end
@@ -47,6 +43,29 @@ class Api::V1::RecipesController < ApiController
   private
 
   def edamam_recipe_search(query)
+
+    # if Rails.env.test?
+    #   #pass back fake data (only if VCR is not working in codeship) 
+    #   result = {
+    #     result: {
+    #       hits: [
+    #         {
+    #           recipe: {
+    #             label: "Fake Recipe Label",
+    #             image: "fakeurlforimage.com",
+    #             url: "fakerecipeurl.com"
+    #           }
+    #         }
+    #       ]
+    #     }
+    #   }
+    # else 
+      url = "https://api.edamam.com/search?q=#{query}&app_id=#{ENV["APP_ID"]}&app_key=#{ENV["APP_KEY"]}"
+      api_response = Faraday.get(url)  
+      parsed_response = JSON.parse(api_response.body)
+      result = parsed_response
+    # end
+   
     # makes the request 
     # parses it from json
 
