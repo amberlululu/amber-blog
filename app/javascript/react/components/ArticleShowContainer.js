@@ -44,6 +44,7 @@ const ArticleShowContainer = (props) => {
         id={articleRecord.id}
         title={articleRecord.title}
         description={articleRecord.description}
+        image={articleRecord.image}
         article_creater={articleRecord.article_creater}
         updateReviews={updateReviews}
         admin={articleRecord.admin_user}

@@ -95,9 +95,7 @@ const ArticleTile = ({
                 >
                   View
                 </Link>
-                <Link to="/" className="btn btn-outline-info mr-2">
-                  Edit
-                </Link>
+
                 <button
                   className="btn btn-outline-danger"
                   onClick={confirmDelete}
