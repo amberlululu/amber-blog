@@ -88,9 +88,9 @@ RSpec.describe Api::V1::RecipesController, type: :controller do
         parsed_response = JSON.parse(response.body)
         results = parsed_response['result']['hits']
       
-        expect(results[0]["recipe"]).to have_key 'label'
-        expect(results[0]["recipe"]).to have_key 'url'
-        expect(results[0]["recipe"]).to have_key 'image'
+        # expect(results[0]["recipe"]).to have_key 'label'
+        # expect(results[0]["recipe"]).to have_key 'url'
+        # expect(results[0]["recipe"]).to have_key 'image'
         
         expect(results[0]["recipe"]['label']).to eq 'Chicken Vesuvio'
         expect(results[0]["recipe"]['image']).to eq 'https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg'

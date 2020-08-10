@@ -39,11 +39,22 @@ class Api::V1::RecipesController < ApiController
     api_response = Faraday.get(url)  
     parsed_response = JSON.parse(api_response.body)
     result = parsed_response
+    # take this data structure and clean it up 
     render json: {result: result}
   end
 
 
   private
+
+  def edamam_recipe_search(query)
+    # makes the request 
+    # parses it from json
+
+    #potentially add in error handling to see that either edamam was communicated with correctly, or that VCR correctly served up a fake response
+
+    # clean up the data so that you only have key/value pairs of info that you need (or you could seperate this step into its own method)
+    # (OR you could make a plain old ruby class to help you, but hold off on this until your test suite is running on codeship) 
+  end
 
   def recipe_params
     params.require(:recipe).permit(:label, :image, :url)
