@@ -1,0 +1,54 @@
+
+<div class="container">
+      <h1>hello, welcome to Foodie Monster !</h1>
+      <%# <img
+        src=""
+        alt="avatar"
+        class="avatar-img"
+      /> %>
+      <div class="card profile-card">
+        <img
+          src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/k-v-i-p-flaticon01-131_2.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=a85bc8f5b60196c4193f99c5a2613867"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">
+            <%=@user.first_name%> <%=@user.last_name%>
+          </h5>
+          <p class="card-text"></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%=@user.username%></li>
+          <li class="list-group-item"><%=@user.email%></li>
+        </ul>
+        <div class="card-body text-center">
+          <a href="#" class="card-link">
+            Edit Profile
+          </a>
+        </div>
+      </div>
+      <div class="social-links">
+        <a
+          href="https://www.linkedin.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+        </a>
+        <a
+          href="https://www.github.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <i class="fa fa-github-square" aria-hidden="true" ></i>
+        </a>
+        <a
+          href="https://www.youtube.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <i class="fa fa-youtube-square" aria-hidden="true" ></i>
+        </a>
+      </div>
+    </div>

@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
 group :development, :test do
   gem "vcr"
-  gem "webmock" 
+  gem "webmock"
 end
 
 group :development do
@@ -60,7 +60,8 @@ gem 'webpacker', '~> 3.3'
 
 gem 'faker'
 gem "active_model_serializers"
+
 gem 'dotenv-rails'
 
 gem 'faraday', '~> 0.9.2'
-
+gem 'redis', '~> 4.0'

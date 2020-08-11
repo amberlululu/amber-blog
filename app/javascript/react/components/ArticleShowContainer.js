@@ -23,7 +23,6 @@ const ArticleShowContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        debugger;
         setArticleRecord(body.article);
         setReviews(body.article.reviews);
       })
