@@ -7,16 +7,17 @@ Rails.application.routes.draw do
   get '/articles/:id', to: "homes#index"
   get '/weather', to: "homes#index"
   get '/recipes', to: "homes#index"
-  get '/users/:id',to: "homes#index"
   get "/chats/:id", to: "homes#index"
+
   mount ActionCable.server => '/cable'
 
+  resources :users, only: [:index, :show, :destroy]
 
   namespace :api do
     namespace :v1 do
       resources :messages, only: [:create]
-      get "users/current" => "users#current_user"
       resources :users, only: [:show]
+      get "users/current" => "users#current_user"
       get '/recipes/search' => "recipes#search"
       resources :recipes, only: [:create, :index, :destroy, :search]
       get '/weathers/search' => "weathers#search"
@@ -27,8 +28,6 @@ Rails.application.routes.draw do
 
     end
   end
-
-  resources :users, only: [:index, :destroy]
 
   devise_scope :user do
     get "users/sign_out" => "devise/sessions#destroy"

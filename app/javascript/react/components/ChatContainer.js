@@ -14,18 +14,18 @@ const ChatContainer = (props) => {
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
-        // debugger;
+        debugger;
         let { ok } = response;
         if (ok) {
           return response.json();
         }
       })
       .then((data) => {
+        debugger;
         setUser(data);
       });
 
     App.chatChannel = App.cable.subscriptions.create(
-      // Info that is sent to the subscribed method
       {
         channel: "ChatChannel",
         chat_id: 1,
@@ -37,7 +37,6 @@ const ChatContainer = (props) => {
         connected: () => console.log("ChatChannel connected"),
         disconnected: () => console.log("ChatChannel disconnected"),
         received: (data) => {
-          // Data broadcasted from the chat channel
           console.log(data);
           handleMessageReceipt(data);
         },
@@ -56,12 +55,12 @@ const ChatContainer = (props) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     // Send info to the receive method on the back end
+    debugger;
     App.chatChannel.send({
       message: message,
       user: user,
     });
-
-    handleClearForm();
+    // handleClearForm();
   };
 
   const handleMessageChange = (event) => {
@@ -69,11 +68,11 @@ const ChatContainer = (props) => {
   };
 
   let messagesComponents = messages.map((message) => {
+    debugger;
     return (
       <Message
         key={message.messageId}
-        handle={message.user.handle}
-        icon={message.user.icon_num}
+        username={message.user.username}
         message={message.message}
       />
     );

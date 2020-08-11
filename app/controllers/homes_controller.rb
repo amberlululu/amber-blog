@@ -5,11 +5,17 @@ class HomesController < ApplicationController
   def index    
   end
 
+  def show
+
+  end 
+
   def authenticated
   end 
 
   def authorized  
   end
+
+  
 
   protected
 

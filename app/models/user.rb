@@ -16,9 +16,11 @@ class User < ApplicationRecord
   validates :email, presence: true
   
   has_many :articles
-
   has_many :user_recipes
   has_many :recipes, through: :user_recipes
+
+  has_many :messages
+  has_many :chats, through: :messages
 
   # mount_uploader :profile_photo, ProfilePhotoUploader
 

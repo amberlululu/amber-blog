@@ -10,12 +10,20 @@
       <li class="nav-item active">
         <%= link_to "Articles", articles_path, class: "nav-link"%>
       </li>
+      <% if current_user %>
+        <li class="nav-item">
+          <%= link_to "Profile", user_path(current_user), class:"nav-link"%>
+        </li> 
+      <% end %>   
       <li class="nav-item">
-        <a class="nav-link" href='#'>More...</a>
+        <a class="nav-link" href="/recipes" >Food Recipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" >Search Restaurants</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Search
+              More
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/weather">Weather</a>
@@ -23,9 +31,6 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/recipes" >Food Recipes</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

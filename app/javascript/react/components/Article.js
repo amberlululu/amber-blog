@@ -1,6 +1,5 @@
 import React from "react";
 import Review from "./Review";
-import { Link } from "react-router-dom";
 
 const Article = ({
   id,
@@ -41,9 +40,9 @@ const Article = ({
         <h3>Reviews</h3>
         {articleReviews}
       </div>
-      <Link to={`/users/${current_user_id}`}>
-        <p className="text-center text-black">Your Profile</p>
-      </Link>
+      <div className="text-center">
+        <a href={`/users/${current_user_id}`}>User Profile</a>
+      </div>
     </div>
   );
 };
