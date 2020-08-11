@@ -25,6 +25,7 @@ class Api::V1::RecipesController < ApiController
 
 
   def destroy
+ 
     user = current_user
     recipe = Recipe.find(params[:id])    
     recipe.destroy

@@ -8,9 +8,12 @@ Rails.application.routes.draw do
   get '/weather', to: "homes#index"
   get '/recipes', to: "homes#index"
   
+  get '/users/:id',to: "homes#index"
+
    
   namespace :api do
-    namespace :v1 do
+    namespace :v1 do    
+      resources :users, only: [:show]      
       get '/recipes/search' => "recipes#search"
       resources :recipes, only: [:create, :index, :destroy, :search]
       get '/weathers/search' => "weathers#search"

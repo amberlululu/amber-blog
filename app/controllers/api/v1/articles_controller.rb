@@ -4,6 +4,7 @@ class Api::V1::ArticlesController < ApiController
   before_action :authorize_user, except: [:index, :show, :create]
   
   def index 
+ 
     articles = Article.all 
     render json: articles
   end

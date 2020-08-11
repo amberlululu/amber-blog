@@ -11,8 +11,9 @@ class User < ApplicationRecord
   #                      length: { maximum: 105},
   #                      format: { with: VALID_EMAIL_REGEX }
   validates :first_name, presence: true
-  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :username, presence: true
+  validates :email, presence: true
   
   has_many :articles
 

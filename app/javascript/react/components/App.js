@@ -6,7 +6,7 @@ import ArticleShowContainer from "./ArticleShowContainer";
 import MainPage from "./MainPage";
 import Weather from "./Weather";
 import FoodRecipe from "./FoodRecipe";
-
+import UserProfile from "./UserProfile";
 export const App = (props) => {
   return (
     <BrowserRouter>
@@ -17,6 +17,7 @@ export const App = (props) => {
         <Route exact path="/articles/:id" component={ArticleShowContainer} />
         <Route exact path="/weather" component={Weather} />
         <Route exact path="/recipes" component={FoodRecipe} />
+        <Route exact path="/users/:id" component={UserProfile} />
       </Switch>
     </BrowserRouter>
   );
