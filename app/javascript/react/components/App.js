@@ -7,6 +7,7 @@ import MainPage from "./MainPage";
 import Weather from "./Weather";
 import FoodRecipe from "./FoodRecipe";
 import ChatContainer from "./ChatContainer";
+import UserProfile from "./UserProfile";
 
 export const App = (props) => {
   return (
@@ -18,7 +19,8 @@ export const App = (props) => {
         <Route exact path="/articles/:id" component={ArticleShowContainer} />
         <Route exact path="/weather" component={Weather} />
         <Route exact path="/recipes" component={FoodRecipe} />
-        <Route exact path="/chats/:id" component={ChatContainer} />
+        <Route exact path="/users/:id" component={UserProfile} />
+          <Route exact path="/chats/:id" component={ChatContainer} />
       </Switch>
     </BrowserRouter>
   );

@@ -23,6 +23,7 @@ const ArticleShowContainer = (props) => {
       })
       .then((response) => response.json())
       .then((body) => {
+        debugger;
         setArticleRecord(body.article);
         setReviews(body.article.reviews);
       })
@@ -34,6 +35,7 @@ const ArticleShowContainer = (props) => {
   };
 
   const updateReviews = (updatedReview) => {
+    // debugger;
     setReviews(updatedReview);
   };
 
@@ -44,7 +46,9 @@ const ArticleShowContainer = (props) => {
         id={articleRecord.id}
         title={articleRecord.title}
         description={articleRecord.description}
+        image={articleRecord.image}
         article_creater={articleRecord.article_creater}
+        current_user_id={articleRecord.current_user_id}
         updateReviews={updateReviews}
         admin={articleRecord.admin_user}
         reviews={reviews}

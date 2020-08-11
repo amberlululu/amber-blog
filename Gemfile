@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+
 ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -29,7 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-
+  gem "vcr"
+  gem "webmock"
 end
 
 group :development do
@@ -58,4 +60,8 @@ gem 'webpacker', '~> 3.3'
 
 gem 'faker'
 gem "active_model_serializers"
+
+gem 'dotenv-rails'
+
+gem 'faraday', '~> 0.9.2'
 gem 'redis', '~> 4.0'

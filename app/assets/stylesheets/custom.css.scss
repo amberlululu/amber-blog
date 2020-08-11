@@ -28,7 +28,6 @@
 
 #page-content {
   flex: 1 0 auto;
-  background-color: #b7b8ba;
 }
 
 body {
@@ -44,12 +43,40 @@ footer {
   height: 10px;
 }
 
+.avatar-img {
+  width: 1200px;
+  height: 400px;
+}
+
+.profile-card {
+  width: 18rem;
+  margin-top: 100px;
+  float: left;
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  margin-top: 600px;
+  margin-left: 250px;
+  display: inline-block;
+}
+
+.social-links i {
+  font-size: 5em;
+  padding: 8px;
+}
+.alert-danger {
+  margin-top: 50px;
+}
+
 .card-header {
-  background-color: #ede4da;
+  background-color: #ffb238;
 }
 
 .card-footer {
-  background-color: #ede4da;
+  background-color: #ffb238;
 }
 
 .distance {
@@ -57,14 +84,14 @@ footer {
 }
 
 .form-color {
-  background-color: #ede4da;
-  color: whitesmoke;
+  background-color: #fdefe6;
+  color: #f18e80;
 }
 
 .weather {
   background-image: asset-url("green-mountain.jpg");
   background-size: cover;
-  height: 960px;
+  height: 800px;
   width: 640px;
   margin: 0 auto;
 
@@ -76,13 +103,13 @@ footer {
 }
 
 .main {
-  min-height: 100vh;
+  height: 100vh;
   padding: 25px;
 }
 
 .search-box {
   width: 100%;
-  margin: 100px 75px;
+  margin: 20px 75px;
 }
 
 .search-box .search-bar {
@@ -112,6 +139,7 @@ footer {
   font-weight: 500;
   text-align: center;
   text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  margin-top: 100px;
 }
 .location-box .date {
   color: #fff;
@@ -173,26 +201,25 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #d3d3d3;
+  background-color: #eeabc4;
   border-radius: 0.5rem;
   margin-bottom: 5rem;
-  box-shadow: 1rem 2rem 5rem #aaa;
   position: relative;
 }
 
-.alert {
+.warning {
   position: absolute;
   top: -3rem;
   left: 0;
-  background-color: rgb(233, 72, 72);
+
   width: calc(100% - 0.4rem);
   border-radius: 0.5rem;
   padding: 0.2rem;
 }
 
-.alert h3 {
+.warning h3 {
   font-size: 1.8rem;
-  color: #fff;
+  color: red;
   font-weight: 400;
   text-transform: uppercase;
   text-align: center;
@@ -216,8 +243,7 @@ h1 {
 .search-form input[type="submit"] {
   width: 25%;
   text-transform: uppercase;
-  background-color: #40b48e;
-  color: #fff;
+  color: #ffb238;
 }
 
 .recipes {
@@ -230,15 +256,16 @@ h1 {
 }
 
 .recipe {
-  width: 30rem;
+  width: 20rem;
   margin: 3rem;
   display: flex;
   flex-direction: column;
-  background-color: #d3d3d3;
-  padding: 2rem;
+
+  padding: 1rem;
   position: relative;
-  border-radius: 0.5rem;
+  // border-radius: 0.5rem;
   box-shadow: 2rem 3rem 5rem #aaa;
+  border: 1px solid lightgrey;
 }
 
 .recipe h2 {
@@ -249,14 +276,14 @@ h1 {
   top: 2.5rem;
   left: 2.5rem;
   right: 2.5rem;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 400;
   text-shadow: 0 0.5rem 0.5rem #555;
   color: #fff;
 }
 
 .recipe img {
-  border-radius: 0.5rem;
+  // border-radius: 0.5rem;
   object-fit: cover;
 }
 
@@ -266,19 +293,20 @@ h1 {
 }
 
 .ingre {
-  font-size: 2rem;
+  font-size: 1rem;
   text-transform: uppercase;
   color: #fff;
   background-color: #f69a23;
   border: none;
   border-radius: 0.5rem;
   height: 3rem;
+  width: 18em;
 }
 
 .list {
   font-size: 1rem;
   text-transform: uppercase;
-  color: #fff;
+  color: #85a421;
   border: none;
   border-radius: 0.5rem;
   height: 3rem;
@@ -287,9 +315,9 @@ h1 {
 
 .ingredient-list {
   margin-top: 1rem;
-  background-color: #f0f0f0;
+  background-color: #fde3d2;
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.3rem;
 }
 
 .ingredient-list li {
@@ -297,13 +325,13 @@ h1 {
 }
 
 .ingredient-text {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #888;
 }
 
 .ingredient-weight {
-  color: #40b48e;
-  font-size: 1.3rem;
+  color: #81736a;
+  font-size: 1rem;
 }
 
 #chat {

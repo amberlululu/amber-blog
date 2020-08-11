@@ -21,8 +21,9 @@ const RecipeRow = ({ id, label, url, image, updatedRecipes, index }) => {
       })
       .then((response) => response.json())
       .then((body) => {
-        debugger;
-        if (body) {
+        if (body.recipes) {
+          updatedRecipes(body.recipes);
+        } else {
           updatedRecipes(body);
         }
       })

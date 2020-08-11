@@ -50,10 +50,10 @@ const Recipe = (props) => {
       <h2>{label}</h2>
       <img src={image} alt={label} />
       <a href={url} target="_blank" rel="noopener noreferencer">
-        Recipe Details
+        RECIPE DETAILS
       </a>
       <button onClick={addNewRecipeWrapper} className="list">
-        Add to My List
+        ADD TO MY LIST
       </button>
       <button onClick={() => setShow(!show)} className="ingre">
         Ingredients

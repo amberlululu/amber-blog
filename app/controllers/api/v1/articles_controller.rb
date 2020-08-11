@@ -4,6 +4,7 @@ class Api::V1::ArticlesController < ApiController
   before_action :authorize_user, except: [:index, :show, :create]
   
   def index 
+ 
     articles = Article.all 
     render json: articles
   end
@@ -17,7 +18,6 @@ class Api::V1::ArticlesController < ApiController
   def create
     article = Article.new(article_params)
     article.user = current_user
-
     if article.save
       render json: article
     else 
@@ -36,7 +36,7 @@ class Api::V1::ArticlesController < ApiController
   private
 
   def article_params
-    params.require(:article).permit(:title,:description)
+    params.require(:article).permit(:title,:description,:image)
   end 
 
 

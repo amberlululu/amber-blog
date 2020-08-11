@@ -26,12 +26,14 @@ const ArticlesIndexContainer = (props) => {
   }, []);
 
   let articletiles = articles.map((article) => {
+    debugger;
     return (
       <ArticleTile
         id={article.id}
         key={article.id}
         title={article.title}
         description={article.description}
+        image={article.image}
         created_at={article.created_at}
         article_creater={article.article_creater}
       />
@@ -48,7 +50,7 @@ const ArticlesIndexContainer = (props) => {
       </div>
       <h3>{articletiles}</h3>
       <Link to="/">
-        <p className="text-center text-white">Cancel and return to Home</p>
+        <p className="text-center text-black">Cancel and return to Home</p>
       </Link>
     </div>
   );
