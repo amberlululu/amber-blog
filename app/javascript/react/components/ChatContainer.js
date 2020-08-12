@@ -7,21 +7,26 @@ const ChatContainer = (props) => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
 
+  const handleMessageReceipt = (messages) => {
+    setMessages(messages);
+  };
+
   useEffect(() => {
+    // let chatId = props.match.params.id;
+
     fetch("/api/v1/users/current", {
       credentials: "same-origin",
       method: "GET",
       headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
-        debugger;
         let { ok } = response;
         if (ok) {
           return response.json();
         }
       })
       .then((data) => {
-        debugger;
+        // debugger;
         setUser(data);
       });
 
@@ -31,22 +36,19 @@ const ChatContainer = (props) => {
         chat_id: 1,
         // currently this is hardcoded
         // If you had router, you could do:
-        // chat_id: props.match.params["id"]
+        // chat_id: chatId,
       },
       {
         connected: () => console.log("ChatChannel connected"),
         disconnected: () => console.log("ChatChannel disconnected"),
         received: (data) => {
           console.log(data);
+
           handleMessageReceipt(data);
         },
       }
     );
   }, []);
-
-  const handleMessageReceipt = (message) => {
-    setMessages([...messages, message]);
-  };
 
   const handleClearForm = () => {
     setMessage("");
@@ -55,12 +57,12 @@ const ChatContainer = (props) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     // Send info to the receive method on the back end
-    debugger;
+
     App.chatChannel.send({
       message: message,
       user: user,
     });
-    // handleClearForm();
+    handleClearForm();
   };
 
   const handleMessageChange = (event) => {
