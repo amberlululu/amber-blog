@@ -16,14 +16,16 @@ class ChatChannel < ApplicationCable::Channel
     chat.messages << new_message
 
     chat_key = chat.id
-
-    messages_json = chat.messages.last(8).map do |message|{
+  
+    messages_json = chat.messages.last(8).map do |message|
+      
       chat_json = {
       "chat_key": chat_key,
-      "message": new_message.body,
-      "messageId": new_message.id,
-      "user": data["user"]
+      "message": message.body,
+      "messageId": message.id,
+      "user": message.user
       }
+    
     end 
 
     ActionCable.server.broadcast("chat_#{params[:chat_id]}", messages_json)

@@ -1,11 +1,10 @@
 import React from "react";
-// import { railsAssetImagePath } from "./";
+// import { railsAssetImagePath } from "../../react/constants/railsAssetImagePath";
 
 const Message = ({ username, message }) => {
-  // debugger;
   return (
     <p>
-      <strong> {username}</strong>
+      <strong> {username}: </strong>
       {message}
     </p>
   );
