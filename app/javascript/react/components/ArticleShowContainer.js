@@ -34,7 +34,6 @@ const ArticleShowContainer = (props) => {
   };
 
   const updateReviews = (updatedReview) => {
-    // debugger;
     setReviews(updatedReview);
   };
 

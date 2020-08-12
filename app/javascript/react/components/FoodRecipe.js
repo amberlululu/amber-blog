@@ -18,7 +18,6 @@ const FoodRecipe = () => {
           if (!result.result.more) {
             return setAlert("No food with such name");
           } else {
-            // debugger;
             setQuery("");
             setRecipes(result.result.hits);
             setAlert("");

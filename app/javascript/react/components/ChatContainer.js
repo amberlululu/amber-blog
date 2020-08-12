@@ -26,7 +26,6 @@ const ChatContainer = (props) => {
         }
       })
       .then((data) => {
-        // debugger;
         setUser(data);
       });
 
@@ -56,7 +55,6 @@ const ChatContainer = (props) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // Send info to the receive method on the back end
 
     App.chatChannel.send({
       message: message,
