@@ -1,3 +1,3 @@
-class Api::V1::MessagesController < Api::ApiController
+class Api::V1::MessagesController < ApiController
 
 end
