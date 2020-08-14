@@ -26,7 +26,6 @@ const ArticlesIndexContainer = (props) => {
   }, []);
 
   let articletiles = articles.map((article) => {
-    debugger;
     return (
       <ArticleTile
         id={article.id}
@@ -41,8 +40,8 @@ const ArticlesIndexContainer = (props) => {
   });
 
   return (
-    <div>
-      <h1 className="text-center">Listing all Articles</h1>
+    <div className="article-container">
+      <h1 className="text-center article-head-title">Listing all Articles</h1>
       <div className="text-center">
         <Link to="/articles/new" className="btn btn-outline-success">
           Create New Article

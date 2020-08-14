@@ -87,7 +87,7 @@ const FoodRecipe = () => {
 
   return (
     <div className="food-recipe">
-      <h1>Search Food Recipes</h1>
+      <h1 className="head-title">Search Food Recipes</h1>
       <form className="search-form" onSubmit={onSubmit}>
         {alert !== "" && <Alert alert={alert} />}
         <input
@@ -98,7 +98,7 @@ const FoodRecipe = () => {
         ></input>
         <input type="submit" value="search" />
       </form>
-      <table className="table container">
+      <table className="table container" id="recipe-table">
         <thead>
           <tr>
             <th scope="col">#</th>

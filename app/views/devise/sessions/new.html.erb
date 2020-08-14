@@ -1,9 +1,9 @@
 
-<div class="container" >
+<div class="container" id="log-in-container">
   <div id="page-content">
-    <h2 class="text-center mt-4">Log in</h2>
-      <div class="row justify-centent-center" >
-        <div class="col-12">
+    <h2 class="text-center mt-4" id="log-in-text">Log in</h2>
+      <div class="row justify-centent-center" id="log-in-form" >
+        <div class="col-12" id="log-in-box">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
             <%= f.label :email %><br />
