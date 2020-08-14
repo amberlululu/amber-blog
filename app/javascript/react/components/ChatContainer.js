@@ -68,7 +68,6 @@ const ChatContainer = (props) => {
   };
 
   let messagesComponents = messages.map((message) => {
-    debugger;
     return (
       <Message
         key={message.messageId}
@@ -79,11 +78,12 @@ const ChatContainer = (props) => {
   }, this);
 
   return (
-    <div className="container" id="chat">
+    <div className="container text-center" id="chat">
+      <h1 id="chat-letter">Why not Chat?!!!</h1>
       <div className="callout chat" id="chatWindow">
         {messagesComponents}
       </div>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} id="enter-bar">
         <TextFieldWithSubmit
           content={message}
           name="message"

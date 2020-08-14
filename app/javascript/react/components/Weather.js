@@ -55,9 +55,9 @@ const Weather = () => {
   };
 
   return (
-    <div>
+    <div className="weather-page">
       {errors}
-      <p className="text-center">Search Weather</p>
+      <h1 className="text-center head-title">Search Weather</h1>
       <div
         className={
           typeof weather.main != "undefined"

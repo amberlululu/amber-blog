@@ -18,7 +18,7 @@
 }
 
 .jumbotron {
-  margin-top: 80px;
+  margin-top: 40px;
   background-image: asset-url("back.jpg");
   background-position: center center;
   background-repeat: no-repeat;
@@ -86,6 +86,18 @@ footer {
 .form-color {
   background-color: #fdefe6;
   color: #f18e80;
+}
+
+.article-container {
+  background-image: asset-url("jumbo-copy.jpg");
+  background-size: cover;
+  margin-top: -50px;
+  margin-bottom: -50px;
+}
+
+.weather-page {
+  background-image: asset-url("bubble.jpg");
+  background-size: cover;
 }
 
 .weather {
@@ -183,6 +195,8 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: asset-url("breakfast.jpg");
+  margin-bottom: -100px;
 }
 
 h1 {
@@ -196,13 +210,14 @@ h1 {
 }
 
 .search-form {
-  width: 60rem;
+  width: 40rem;
   height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eeabc4;
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 0.5rem;
+  margin-top: 2rem;
   margin-bottom: 5rem;
   position: relative;
 }
@@ -218,9 +233,9 @@ h1 {
 }
 
 .warning h3 {
-  font-size: 1.8rem;
+  font-size: 1rem;
   color: red;
-  font-weight: 400;
+  font-weight: 1000;
   text-transform: uppercase;
   text-align: center;
 }
@@ -246,6 +261,15 @@ h1 {
   color: #ffb238;
 }
 
+#recipe-table {
+  width: 60rem;
+}
+
+#recipe-table thead {
+  background-color: #adc0b4;
+  color: #fff;
+}
+
 .recipes {
   width: 90%;
   display: flex;
@@ -260,7 +284,7 @@ h1 {
   margin: 3rem;
   display: flex;
   flex-direction: column;
-
+  background-image: asset-url("white.jpg");
   padding: 1rem;
   position: relative;
   // border-radius: 0.5rem;
@@ -289,7 +313,7 @@ h1 {
 
 .recipe a {
   font-size: 1rem;
-  color: #f85a6e;
+  color: #fff;
 }
 
 .ingre {
@@ -335,5 +359,101 @@ h1 {
 }
 
 #chat {
-  margin-top: 200px;
+  margin-top: 50px;
+  padding-top: 100px;
+  background-image: asset-url("tacolarge.jpg");
+  background-size: cover;
+  height: 700px;
+}
+
+#chatWindow {
+  height: 400px;
+  width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#chat-letter {
+  color: white;
+}
+
+#enter-bar {
+  margin-top: 10px;
+  margin-left: 153px;
+
+  width: 725px;
+}
+#chat-button {
+  height: 39px;
+  margin-top: 10px;
+}
+
+#each-message {
+  margin-left: 10px;
+}
+
+#sign-up-container {
+  font-family: sans-serif;
+  background-image: asset-url("foodhangout.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 700px;
+}
+#sign-up-form {
+  width: 300px;
+  text-align: center;
+  margin: 8% auto 0;
+  margin-top: 50px;
+}
+
+#sign-up-box {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+#sign-up-box label {
+  color: #fff;
+}
+#sign-up-text {
+  padding-top: 50px;
+  margin-top: 300px;
+}
+
+#log-in-container {
+  font-family: sans-serif;
+  background-image: asset-url("coffeetree.jpg");
+  background-size: cover;
+  background-position: center;
+  min-height: 700px;
+}
+
+#log-in-form {
+  color: #fff;
+  width: 300px;
+  text-align: center;
+  margin: 8% auto 0;
+  margin-top: 50px;
+}
+
+#log-in-text {
+  padding-top: 50px;
+  color: #fff;
+}
+
+#log-in-box {
+  background: rgba(0, 0, 0, 0.5);
+  width: 500px;
+  height: 500px;
+  display: inline-block;
+}
+
+#log-in-box label {
+  color: #fff;
+}
+
+.article-head-title {
+  padding-top: 100px;
+}
+
+.head-title {
+  padding-top: 50px;
 }
