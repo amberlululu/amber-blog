@@ -104,7 +104,6 @@ const FoodRecipe = () => {
             <th scope="col">#</th>
             <th scope="col">Recipe Name</th>
             <th scope="col">URL</th>
-            <th scope="col">IMAGE</th>
             <th scope="col">Action</th>
           </tr>
         </thead>

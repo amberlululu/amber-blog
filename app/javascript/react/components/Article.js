@@ -29,6 +29,15 @@ const Article = ({
     );
   });
 
+  let userProfileLink = <div></div>;
+  if (current_user_id) {
+    userProfileLink = (
+      <div className="text-center">
+        <a href={`/users/${current_user_id}`}>User Profile</a>
+      </div>
+    );
+  }
+
   return (
     <div key={id}>
       <div className="container">
@@ -40,9 +49,7 @@ const Article = ({
         <h3>Reviews</h3>
         {articleReviews}
       </div>
-      <div className="text-center">
-        <a href={`/users/${current_user_id}`}>User Profile</a>
-      </div>
+      {userProfileLink}
     </div>
   );
 };
