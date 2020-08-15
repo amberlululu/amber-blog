@@ -1,6 +1,7 @@
 import React from "react";
 
 const RecipeRow = ({ id, label, url, image, updatedRecipes, index }) => {
+  // debugger;
   const deleteRecipe = (event) => {
     fetch(`/api/v1/recipes/${id}`, {
       credentials: "same-origin",
@@ -34,7 +35,6 @@ const RecipeRow = ({ id, label, url, image, updatedRecipes, index }) => {
       <th scope="row">{index + 1}</th>
       <td>{label}</td>
       <td>{url}</td>
-      <td>{image}</td>
       <td>
         <div onClick={deleteRecipe}>delete</div>
       </td>

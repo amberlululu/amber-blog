@@ -49,7 +49,9 @@ const ArticlesIndexContainer = (props) => {
       </div>
       <h3>{articletiles}</h3>
       <Link to="/">
-        <p className="text-center text-black">Cancel and return to Home</p>
+        <p className="text-center text-black home-link">
+          Cancel and return to Home
+        </p>
       </Link>
     </div>
   );

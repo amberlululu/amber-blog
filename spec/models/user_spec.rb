@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
     it { should have_many(:articles) }
     it { should have_many(:recipes).through(:user_recipes) }
     it { should have_many(:user_recipes) }
-  end
+  end 
  
   describe 'validations' do
     let!(:user1) { FactoryBot.create(:user) }
